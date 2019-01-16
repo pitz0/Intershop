@@ -1,0 +1,16 @@
+<dataroot>
+	<object model="Meddata.medicine" pk="1">
+	<field type="Charfield">334</field>
+	<field type="Charfield">GROUP PHARMA. LTD. </field>
+	<field type="Charfield">GRO</field>
+	<field type="Charfield"> </field>
+	<field type="Charfield"> </field>
+	</object>
+	<object model="Meddata.medicine" pk="2">
+	<field type="Charfield">339</field>
+	<field type="Charfield">GUFIC LIMITED </field>
+	<field type="Charfield">GUF</field>
+	<field type="Charfield"> </field>
+	<field type="Charfield"> </field>
+	</object>
+</dataroot>
