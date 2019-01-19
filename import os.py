@@ -9,24 +9,46 @@
 
 import os 
 import xml.etree.ElementTree as Et
-file_name='MFG.xml'
-base_path = os.path.dirname(os.path.realpath(__file__))
-xml_file = os.path.join(base_path,file_name)
-print('xml_file ---->',xml_file)
-tree = Et.parse("C:/Users/admin/Desktop/Django_Project/tennis/data/MFG.xml")
-root = tree.getroot()
+#file_name = None-------------------------------------> TYPE FILE NAME HERE
+root = None
+tree = None
+
+if(file_name=='ItemMaster.xml'):
+	base_path = os.path.dirname(os.path.realpath(__file__))
+	xml_file = os.path.join(base_path,file_name)
+	print('xml_file ---->',xml_file)
+	tree = Et.parse(xml_file)
+	root = tree.getroot()
+if(file_name=='MFG.xml'):
+	base_path = os.path.dirname(os.path.realpath(__file__))
+	xml_file = os.path.join(base_path,file_name)
+	print('xml_file ---->',os.path.join(os.path.dirname(__file__),'data/'+file_name))
+	tree = Et.parse(os.path.join(os.path.dirname(__file__),'data/'+file_name))
+	root = tree.getroot()
+if(file_name=='GENERIC.xml'):
+	base_path = os.path.dirname(os.path.realpath(__file__))
+	xml_file = os.path.join(base_path,file_name)
+	print('xml_file ---->',xml_file)
+	tree = Et.parse(xml_file)
+	root = tree.getroot()
 count=0
-for child in root:         #loops for each child
-	count+=1
-	child.attrib = {'pk':str(count),'model':'Meddata.medicine'}
-	child.tag = "object"
+if root:
+
+	for child in root:         #loops for each child
+		count+=1
+		child.attrib = {'pk':str(count),'model':'Meddata.medicine'}
+		child.tag = "object"
 	for element in child:   #loops for element is child
 		#tags names will b cahnged to it
-		element.attrib= {"name":element.tag}
-		if (element.tag)=="COCD":
-			element.attrib={"type":"PositiveInteger"}
-		if (element.tag)=="NAME" or "Address" or "Phone":
-			element.attrib={"type":"Charfield"}
-		element.tag = "field"
-		print(element.tag,"------->",element.text)  
-tree.write(xml_file)      # to write the change
+		print(element.tag,"------->",element.text)
+		if element.tag in ["HPRate","Rate","MRP","HMARGIN","RMARGIN","TAX","MST","CST","OCT","EXICE"]:
+			element.attrib={"name":element.tag, "type":"Decimalfield"}
+		elif element.tag in ["PACK","SHRTNM","Address","Phone","NAME","GDESC","Descr","STRENGTH","MFG","CATEGORY","PIS","PISNO","GnCode","ItemCode","MfgCode","COCD"]:
+			element.attrib={"name":element.tag,"type":"Charfield"}
+		elif element.tag in ["PISDATE","EntryDt"]:
+			element.attrib={"name":element.tag,"type":"DateTimeField"}
+			element.tag = "field"
+if tree:		  
+	tree.write(xml_file)      # to write the changeS
+else:
+	print("No tree found!!!!")
