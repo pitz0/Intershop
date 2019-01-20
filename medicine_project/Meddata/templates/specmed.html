@@ -4,8 +4,13 @@
 
 	<div class = "container">
 		<div class= "well">
-			<form>
+			<h1>{{text}}</h1>
+			<form  method = "POST"  action="">
+				{%csrf_token%}
 				{{get_med_form}}
+				{%if get_med_form.errors%}
+					{{ get_med_form.errors}}
+				{%endif%}
 				<button class = "btn btn-primary" type="submit">Find Med!</button>
 			</form>
 		</div>	

@@ -1,2 +1,16 @@
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+	{ % extends "base.html" %}
+
+	{% block body %}	
+	<div class="container">
+		<h1>Home</h1>
+		<form method="post">
+			{% csrf_token %}
+			{{ form.as_p}}
+			<button type="sumbit" >submit
+				
+			</button>
+			
+		</form>
+			 <h2>{{ text }}</h2>
+	</div>
+	{%endvlock %}

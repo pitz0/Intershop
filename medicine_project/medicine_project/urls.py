@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
    # path('piyush/',views.ListMedicineView.as_view(),name = 'medicine-list'),
   	path('',views.landing,name = 'landing'),
-    path('medicine_project', include('Meddata.urls')),
+    path('medicine_project',include('Meddata.urls')),
 ]

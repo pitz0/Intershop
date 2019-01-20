@@ -5,4 +5,4 @@ from .models import medicine
 class MedicineSerializer(serializers.ModelSerializer):
     class Meta:
         model = medicine
-        fields = ("ItemCode", "Descr")
+        fields = ("ItemCode") #removed the Descr from bacess

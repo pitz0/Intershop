@@ -42,4 +42,4 @@ class medicine(models.Model):
 	PISDATE = models.DateTimeField(null = True)
 
 	def __str__(self):
-		return "{}"-"{}".format(self.Descr, self.ItemCode)
+		return self.ItemCode

@@ -57,7 +57,7 @@ ROOT_URLCONF = 'medicine_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR,'templates')],# looks for template folder in every app and renders the template.
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
